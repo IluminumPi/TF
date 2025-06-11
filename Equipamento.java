@@ -8,16 +8,16 @@
 public class Equipamento
 {
     private String nome;
-    private int mobilidade;
-    private int estado;
+    private String mobilidade;
+    private String qualidade;
     private int número;
     
-    public Equipamento(int p, int w, int r, String a){
+    public Equipamento(int p, String w, String r, String a){
         número = p;
         mobilidade = w;
-        estado = r;
+        qualidade = r;
         nome = a;
-       this.estado = estado; 
+       this.qualidade = qualidade; 
        this.mobilidade = mobilidade;
        this.número = número;
        this.nome = nome;
@@ -25,33 +25,11 @@ public class Equipamento
     
     public String getNome(){ return nome;}
     public int getNúmero(){ return número; }
-    public int getMobilidade(){ return mobilidade; }
-    public int getEstado(){ return estado; }
+    public String getMobilidade(){ return mobilidade; }
+    public String getQualidade(){ return qualidade; }
     
     
     public String toString(){
-        String aux = "";
-        String aux2= "";
-        switch (estado) {
-            case 1:
-                aux = "novo";
-                break;
-            case 2:
-                aux = "usado";
-                break;
-            default:
-                break;
-        }
-        switch (mobilidade) {
-            case 1:
-                aux2 = "móvel";
-                break;
-            case 2:
-                aux2 = "máquina(fixo)";
-                break;
-            default:
-                break;
-        }
-        return " Nome: " + nome + "\n Número: " + número + " Estado: " + aux + "\n Mobilidade: " + aux2;
+        return " Nome: " + nome + "\n Número: " + número + "\n Qualidade: " + qualidade + "\n Mobilidade: " + mobilidade + "\n";
     }
 }

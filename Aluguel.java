@@ -1,3 +1,5 @@
+package TRABALHO_FINAL;
+
 import java.util.*;
 public class Aluguel
 {
@@ -51,7 +53,7 @@ public class Aluguel
                     //cadastro.mostrarContas();
                     break;
                 case 9:
-                    equip.mostrarEquipamentos();
+                    //equip.mostrarEquipamentos();
                     break;
                 case 10:
                     //cadastro.mostrarContas();

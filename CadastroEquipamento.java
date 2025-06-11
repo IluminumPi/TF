@@ -1,3 +1,5 @@
+ 
+
 import java.util.*;
 public class CadastroEquipamento
 {
@@ -11,13 +13,13 @@ public class CadastroEquipamento
         if (total < contas.length) {
             System.out.print("Digite o nome do equipamento: ");
             String nome = entrada.next();
-            System.out.print("Digite qual é a mobilidade do equipamento:\n(1) Móvel\t(2) Máquina(fixo)\n");
-            int mobilidade = entrada.nextInt();
-            System.out.print("Digite qual é a qualidade do equipamento:\n(1) Novo\t(2) Usado\n");
-            int qualidade = entrada.nextInt();
+            System.out.print("Digite qual é a mobilidade do equipamento: ");
+            String mobilidade = entrada.next();
+            System.out.print("Digite qual é a qualidade do equipamento: ");
+            String qualidade = entrada.next();
             System.out.print("Digite o número do equipamento: ");
             int número = entrada.nextInt();
-            contas[total] = new Equipamento(mobilidade, qualidade, número, nome); // cria nova conta no vetor
+            contas[total] = new Equipamento(número, mobilidade, qualidade, nome); // cria nova conta no vetor
             System.out.println("\fEquipamento cadastrado com sucesso!");
             total++; // incrementa a quantidade de contas
         } else {
