@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=CadastroEquipamento
+comment1.params=
+comment1.target=void\ cadastrarEquipamento()
+comment2.params=n\u00FAmero
+comment2.target=Equipamento\ buscarEquipamento(int)
+comment3.params=
+comment3.target=void\ mostrarEquipamentos()
+numComments=4
