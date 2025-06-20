@@ -1,0 +1,827 @@
+RELATO DE USO DE IA: 
+
+(x)SIM 
+
+()NÃO
+
+SE SIM, EXPLIQUE COMO FOI FEITO:
+A inteligência artificial ajudou na realização dessa tarefa ao 
+entregar respostas geradas por prompts , que se referiam à como
+fazer a construção das classes e métodos seguindo os critérios 
+exigidos pelo Trabalho Final. Através disso, as sugestões recebidas 
+pela tecnologia foram avaliadas e testadas para verificar se havia a 
+presença de erros no código e se condizia com o que havia sido pedido
+originalmente nos prompts.
+
+obs: Tivemos que usar pois haviamos realizado um progama 
+que não seguia todos os critérios originais do TF, apenas 
+descobrindo tal fato nas últimas horas disponíveis.
+
+obs2: Caso deseje ver o programa original, pode o achar em:
+https://github.com/IluminumPi/TF
+
+PROMPT 1:
+Preciso de uma classe cliente que tenha - matrícula (int)
+- nome (String)
+- academia (String)
+- dados do equipamento alugado (tipo Equipamento)
+Cada academia pode alugar no mínimo 1 de cada tipo, respeitando o estoque
+disponível.
+Métodos: construtor, getters, setters, toString
+
+SAIDA 1:
+Perfeito! Abaixo está o código da **classe `Cliente`**, conforme sua descrição, integrada com a classe `Equipamento`:
+
+---
+
+### ✅ Classe `Cliente`
+
+```java
+public class Cliente {
+    private int matricula;
+    private String nome;
+    private String academia;
+    private Equipamento equipamentoAlugado;
+
+    // Construtor
+    public Cliente(int matricula, String nome, String academia, Equipamento equipamentoAlugado) {
+        this.matricula = matricula;
+        this.nome = nome;
+        this.academia = academia;
+        this.equipamentoAlugado = equipamentoAlugado;
+    }
+
+    // Getters
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getAcademia() {
+        return academia;
+    }
+
+    public Equipamento getEquipamentoAlugado() {
+        return equipamentoAlugado;
+    }
+
+    // Setters
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setAcademia(String academia) {
+        this.academia = academia;
+    }
+
+    public void setEquipamentoAlugado(Equipamento equipamentoAlugado) {
+        this.equipamentoAlugado = equipamentoAlugado;
+    }
+
+    // toString
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "matricula=" + matricula +
+                ", nome='" + nome + '\'' +
+                ", academia='" + academia + '\'' +
+                ", equipamentoAlugado=" + (equipamentoAlugado != null ? equipamentoAlugado.toString() : "Nenhum") +
+                '}';
+    }
+}
+```
+
+---
+
+### 🔁 Exemplo de uso
+
+Suponha que você tenha um objeto `Equipamento` chamado `esteira`:
+
+```java
+Equipamento esteira = new Equipamento("Esteira", "Cardio", 3, 1500.00);
+Cliente cliente1 = new Cliente(101, "João da Silva", "Academia Fit", esteira);
+
+System.out.println(cliente1);
+```
+
+---
+
+### 🧠 Dica extra (sobre aluguel e estoque)
+
+Se quiser fazer um controle de estoque mais rigoroso, pode criar um método em `CadastroEquipamento` que **verifica se ainda há unidades disponíveis** de um equipamento antes de permitir o aluguel:
+
+```java
+public boolean alugarEquipamento(String nomeEquipamento) {
+    int index = totalEquipamentos(nomeEquipamento);
+    if (index != -1 && contas[index].getQuantidade() > 0) {
+        contas[index].setQuantidade(contas[index].getQuantidade() - 1);
+        return true;
+    }
+    return false;
+}
+```
+
+Se quiser, posso te ajudar a montar um sistema simples de aluguel para amarrar clientes com equipamentos e garantir que respeite o estoque. Deseja isso?
+
+
+PROMPT 2:
+Preciso de uma classe Equipamento com os atributos:
+- código (int)
+- nome (String)
+- tipo: barra, kettlebell ou corda naval (String)
+- quantidade disponível para locação (int)
+- valor base da locação (double)
+- valor do aluguel por 1 semana, 15 dias ou 1 mês (com 5% de desconto para 15 dias e
+10% para 1 mês)
+- seguro (boolean): se for contratado, acrescenta 2% ao valor total
+Métodos: construtor, getters, setters, toString, retirar() (diminui quantidade se
+disponível) e devolver() (aumenta quantidade).
+
+SAIDA 2:
+Ótimo! Com base nas especificações que você deu, aqui está a implementação completa da classe `Equipamento` em Java.
+
+---
+
+### ✅ Classe `Equipamento`
+
+```java
+public class Equipamento {
+    private int codigo;
+    private String nome;
+    private String tipo; // "barra", "kettlebell" ou "corda naval"
+    private int quantidadeDisponivel;
+    private double valorBase;
+    private boolean seguro;
+
+    // Construtor
+    public Equipamento(int codigo, String nome, String tipo, int quantidadeDisponivel, double valorBase, boolean seguro) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.tipo = tipo;
+        this.quantidadeDisponivel = quantidadeDisponivel;
+        this.valorBase = valorBase;
+        this.seguro = seguro;
+    }
+
+    // Getters
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public int getQuantidadeDisponivel() {
+        return quantidadeDisponivel;
+    }
+
+    public double getValorBase() {
+        return valorBase;
+    }
+
+    public boolean isSeguro() {
+        return seguro;
+    }
+
+    // Setters
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setQuantidadeDisponivel(int quantidadeDisponivel) {
+        this.quantidadeDisponivel = quantidadeDisponivel;
+    }
+
+    public void setValorBase(double valorBase) {
+        this.valorBase = valorBase;
+    }
+
+    public void setSeguro(boolean seguro) {
+        this.seguro = seguro;
+    }
+
+    // toString
+    @Override
+    public String toString() {
+        return "Equipamento{" +
+                "codigo=" + codigo +
+                ", nome='" + nome + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", quantidadeDisponivel=" + quantidadeDisponivel +
+                ", valorBase=" + valorBase +
+                ", seguro=" + (seguro ? "Contratado" : "Não contratado") +
+                '}';
+    }
+
+    // Método para calcular o valor do aluguel com base no período
+    public double calcularValorAluguel(int dias) {
+        double valor = valorBase;
+        
+        if (dias == 15) {
+            valor *= 0.95; // 5% de desconto
+        } else if (dias >= 30) {
+            valor *= 0.90; // 10% de desconto
+        }
+
+        if (seguro) {
+            valor *= 1.02; // 2% de acréscimo
+        }
+
+        return valor;
+    }
+
+    // Método para retirar (alugar) equipamento
+    public boolean retirar() {
+        if (quantidadeDisponivel > 0) {
+            quantidadeDisponivel--;
+            return true;
+        } else {
+            return false; // sem estoque
+        }
+    }
+
+    // Método para devolver (devolver ao estoque)
+    public void devolver() {
+        quantidadeDisponivel++;
+    }
+}
+```
+
+---
+
+### 🔁 Exemplo de uso
+
+```java
+public class TesteEquipamento {
+    public static void main(String[] args) {
+        Equipamento barra = new Equipamento(101, "Barra Olímpica", "barra", 5, 200.0, true);
+        
+        System.out.println(barra);
+        System.out.println("Valor para 1 semana: R$" + barra.calcularValorAluguel(7));
+        System.out.println("Valor para 15 dias: R$" + barra.calcularValorAluguel(15));
+        System.out.println("Valor para 1 mês: R$" + barra.calcularValorAluguel(30));
+        
+        System.out.println("Retirando equipamento...");
+        if (barra.retirar()) {
+            System.out.println("Alugado com sucesso.");
+        } else {
+            System.out.println("Estoque insuficiente.");
+        }
+
+        System.out.println("Quantidade atual: " + barra.getQuantidadeDisponivel());
+
+        barra.devolver();
+        System.out.println("Devolvido. Quantidade atual: " + barra.getQuantidadeDisponivel());
+    }
+}
+```
+
+---
+
+Se quiser, posso integrar essa classe com seu sistema de cadastro ou adicionar controle automático de retirada com base no estoque. Deseja isso também?
+
+
+PROMPT 3:
+Preciso de uma classe CadastroEquipamento:
+- Armazena até 10 equipamentos
+- Deve conter ao menos 6 equipamentos pré-cadastrados (2 de cada tipo)
+- Métodos: adicionaEquipamento, removeEquipamento, buscaEquipamentoPeloNome,
+totalEquipamentos, mostraEquipamentos
+
+SAIDA 3:
+Perfeito! Com base nos seus requisitos e na estrutura anterior que você já compartilhou, aqui está uma versão da **classe `CadastroEquipamento`** revisada, com:
+
+* Armazenamento de até 10 equipamentos
+* 6 equipamentos pré-cadastrados (2 de cada tipo: barra, kettlebell, corda naval)
+* Métodos solicitados: `adicionaEquipamento`, `removeEquipamento`, `buscaEquipamentoPeloNome`, `totalEquipamentos`, `mostraEquipamentos`
+
+---
+
+### ✅ Classe `CadastroEquipamento`
+
+```java
+import java.util.Scanner;
+
+public class CadastroEquipamento {
+    private Equipamento[] equipamentos = new Equipamento[10];
+    private int total = 0;
+    private Scanner entrada = new Scanner(System.in);
+
+    // Construtor que cadastra 6 equipamentos iniciais
+    public CadastroEquipamento() {
+        equipamentos[total++] = new Equipamento(1, "Barra Olímpica", "barra", 3, 200.0, false);
+        equipamentos[total++] = new Equipamento(2, "Barra Curva", "barra", 2, 180.0, true);
+        equipamentos[total++] = new Equipamento(3, "Kettlebell 12kg", "kettlebell", 4, 120.0, false);
+        equipamentos[total++] = new Equipamento(4, "Kettlebell 16kg", "kettlebell", 3, 150.0, true);
+        equipamentos[total++] = new Equipamento(5, "Corda Naval Média", "corda naval", 2, 250.0, false);
+        equipamentos[total++] = new Equipamento(6, "Corda Naval Pesada", "corda naval", 1, 300.0, true);
+    }
+
+    // Adiciona novo equipamento, se houver espaço
+    public void adicionaEquipamento() {
+        if (total < equipamentos.length) {
+            System.out.print("Digite o código do equipamento: ");
+            int codigo = entrada.nextInt();
+            entrada.nextLine(); // Limpa o buffer
+            System.out.print("Digite o nome do equipamento: ");
+            String nome = entrada.nextLine();
+            System.out.print("Digite o tipo (barra, kettlebell ou corda naval): ");
+            String tipo = entrada.nextLine();
+            System.out.print("Digite a quantidade disponível: ");
+            int quantidade = entrada.nextInt();
+            System.out.print("Digite o valor base da locação: ");
+            double valorBase = entrada.nextDouble();
+            System.out.print("Deseja contratar seguro? (true/false): ");
+            boolean seguro = entrada.nextBoolean();
+
+            equipamentos[total++] = new Equipamento(codigo, nome, tipo, quantidade, valorBase, seguro);
+            System.out.println("Equipamento cadastrado com sucesso!\n");
+        } else {
+            System.out.println("Limite máximo de equipamentos atingido.\n");
+        }
+    }
+
+    // Remove equipamento pelo nome (primeira ocorrência)
+    public void removeEquipamento(String nome) {
+        int posicao = totalEquipamentos(nome);
+        if (posicao == -1) {
+            System.out.println("Equipamento não encontrado.\n");
+            return;
+        }
+        for (int i = posicao; i < total - 1; i++) {
+            equipamentos[i] = equipamentos[i + 1];
+        }
+        equipamentos[--total] = null;
+        System.out.println("Equipamento removido com sucesso.\n");
+    }
+
+    // Busca equipamento pelo nome
+    public Equipamento buscaEquipamentoPeloNome(String nome) {
+        for (int i = 0; i < total; i++) {
+            if (equipamentos[i].getNome().equalsIgnoreCase(nome)) {
+                return equipamentos[i];
+            }
+        }
+        return null;
+    }
+
+    // Retorna a posição do equipamento no array, se existir
+    public int totalEquipamentos(String nome) {
+        for (int i = 0; i < total; i++) {
+            if (equipamentos[i].getNome().equalsIgnoreCase(nome)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // Mostra todos os equipamentos cadastrados
+    public void mostraEquipamentos() {
+        if (total == 0) {
+            System.out.println("Nenhum equipamento cadastrado.");
+            return;
+        }
+
+        System.out.println("Lista de Equipamentos:");
+        for (int i = 0; i < total; i++) {
+            System.out.println(equipamentos[i]);
+        }
+    }
+}
+```
+
+---
+
+### 🧪 Exemplo de uso da classe
+
+```java
+public class TesteCadastro {
+    public static void main(String[] args) {
+        CadastroEquipamento cadastro = new CadastroEquipamento();
+        
+        // Mostra os 6 equipamentos iniciais
+        cadastro.mostraEquipamentos();
+
+        // Busca por nome
+        Equipamento e = cadastro.buscaEquipamentoPeloNome("Corda Naval Média");
+        if (e != null) {
+            System.out.println("\nEncontrado: " + e);
+        }
+
+        // Remove um equipamento
+        cadastro.removeEquipamento("Barra Curva");
+
+        // Mostra após remoção
+        System.out.println("\nApós remoção:");
+        cadastro.mostraEquipamentos();
+    }
+}
+```
+
+---
+
+Se quiser, posso montar também uma **interface de menu** para que o usuário possa interagir com o cadastro de forma mais amigável via console. Deseja isso?
+
+
+PROMPT 4:
+Preciso de uma Classe CadastroCliente que:
+- Armazena até 10 clientes
+- Métodos: adicionaCliente, buscaClientePeloNome, mostraClientes
+
+SAIDA 4:
+Claro! Abaixo está a implementação completa da **classe `CadastroCliente`**, que:
+
+* Armazena até 10 objetos da classe `Cliente`
+* Possui os métodos:
+
+  * `adicionaCliente()` – adiciona um novo cliente
+  * `buscaClientePeloNome(String nome)` – retorna o cliente correspondente
+  * `mostraClientes()` – imprime todos os clientes cadastrados
+
+> **Pré-requisitos:** você já deve ter a classe `Cliente` e a classe `Equipamento` funcionando.
+
+---
+
+### ✅ Classe `CadastroCliente`
+
+```java
+import java.util.Scanner;
+
+public class CadastroCliente {
+    private Cliente[] clientes = new Cliente[10];
+    private int total = 0;
+    private Scanner entrada = new Scanner(System.in);
+
+    // Adiciona cliente (com equipamento alugado passado como parâmetro)
+    public void adicionaCliente(Equipamento equipamentoAlugado) {
+        if (total >= clientes.length) {
+            System.out.println("Limite de clientes atingido.");
+            return;
+        }
+
+        System.out.print("Digite a matrícula do cliente: ");
+        int matricula = entrada.nextInt();
+        entrada.nextLine(); // limpa o buffer
+        System.out.print("Digite o nome do cliente: ");
+        String nome = entrada.nextLine();
+        System.out.print("Digite o nome da academia: ");
+        String academia = entrada.nextLine();
+
+        // Verifica se há estoque do equipamento
+        if (equipamentoAlugado.retirar()) {
+            clientes[total++] = new Cliente(matricula, nome, academia, equipamentoAlugado);
+            System.out.println("Cliente cadastrado com sucesso e equipamento alugado!");
+        } else {
+            System.out.println("Não há unidades disponíveis para este equipamento.");
+        }
+    }
+
+    // Busca cliente pelo nome
+    public Cliente buscaClientePeloNome(String nome) {
+        for (int i = 0; i < total; i++) {
+            if (clientes[i].getNome().equalsIgnoreCase(nome)) {
+                return clientes[i];
+            }
+        }
+        return null;
+    }
+
+    // Mostra todos os clientes
+    public void mostraClientes() {
+        if (total == 0) {
+            System.out.println("Nenhum cliente cadastrado.");
+            return;
+        }
+
+        System.out.println("Lista de Clientes:");
+        for (int i = 0; i < total; i++) {
+            System.out.println(clientes[i]);
+        }
+    }
+}
+```
+
+---
+
+### 🧪 Exemplo de uso da classe
+
+```java
+public class TesteCadastroCliente {
+    public static void main(String[] args) {
+        CadastroEquipamento cadastroEquipamento = new CadastroEquipamento();
+        CadastroCliente cadastroCliente = new CadastroCliente();
+
+        // Buscar um equipamento para alugar
+        Equipamento equip = cadastroEquipamento.buscaEquipamentoPeloNome("Kettlebell 12kg");
+
+        if (equip != null) {
+            cadastroCliente.adicionaCliente(equip);
+        } else {
+            System.out.println("Equipamento não encontrado.");
+        }
+
+        // Mostrar todos os clientes cadastrados
+        System.out.println("\nClientes cadastrados:");
+        cadastroCliente.mostraClientes();
+    }
+}
+```
+
+---
+
+### ✅ Integração com estoque do equipamento
+
+A chamada `equipamentoAlugado.retirar()` no método `adicionaCliente()` garante que o aluguel só acontece se houver estoque disponível.
+
+---
+
+Se quiser, posso montar um **menu interativo com cadastro de clientes e aluguel de equipamentos**. Deseja esse recurso?
+
+
+PROMPT 5:
+Preciso de uma Classe Aluguel (aplicação com método main) que contenha: Menu:
+1 – Incluir Cliente
+2 – Mostrar clientes cadastrados
+3 – Pesquisar cliente por nome
+4 – Incluir equipamento
+5 – Mostrar equipamentos
+6 – Pesquisar equipamento por nome
+7 – Retirar equipamento
+8 – Devolver equipamento
+9 – Mostrar quantidade total de equipamentos disponíveis
+
+SAIDA 5:
+Perfeito! Abaixo está a implementação completa da **classe `Aluguel`**, que funciona como **classe principal da aplicação com `main()`**, incluindo o **menu interativo** com as opções solicitadas:
+
+---
+
+### ✅ Classe `Aluguel` (com método `main` e menu)
+
+```java
+import java.util.Scanner;
+
+public class Aluguel {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        CadastroCliente cadastroCliente = new CadastroCliente();
+        CadastroEquipamento cadastroEquipamento = new CadastroEquipamento();
+
+        int opcao;
+
+        do {
+            System.out.println("\n--- MENU ALUGUEL DE EQUIPAMENTOS ---");
+            System.out.println("1 – Incluir Cliente");
+            System.out.println("2 – Mostrar clientes cadastrados");
+            System.out.println("3 – Pesquisar cliente por nome");
+            System.out.println("4 – Incluir equipamento");
+            System.out.println("5 – Mostrar equipamentos");
+            System.out.println("6 – Pesquisar equipamento por nome");
+            System.out.println("7 – Retirar equipamento");
+            System.out.println("8 – Devolver equipamento");
+            System.out.println("9 – Mostrar quantidade total de equipamentos disponíveis");
+            System.out.println("0 – Sair");
+            System.out.print("Escolha uma opção: ");
+            opcao = entrada.nextInt();
+            entrada.nextLine(); // limpar buffer
+
+            switch (opcao) {
+                case 1: // Incluir Cliente
+                    System.out.print("Digite o nome do equipamento a ser alugado: ");
+                    String nomeEquip = entrada.nextLine();
+                    Equipamento equipamento = cadastroEquipamento.buscaEquipamentoPeloNome(nomeEquip);
+                    if (equipamento != null) {
+                        cadastroCliente.adicionaCliente(equipamento);
+                    } else {
+                        System.out.println("Equipamento não encontrado.");
+                    }
+                    break;
+
+                case 2: // Mostrar clientes
+                    cadastroCliente.mostraClientes();
+                    break;
+
+                case 3: // Pesquisar cliente por nome
+                    System.out.print("Digite o nome do cliente: ");
+                    String nomeCli = entrada.nextLine();
+                    Cliente cliente = cadastroCliente.buscaClientePeloNome(nomeCli);
+                    if (cliente != null) {
+                        System.out.println("Cliente encontrado: " + cliente);
+                    } else {
+                        System.out.println("Cliente não encontrado.");
+                    }
+                    break;
+
+                case 4: // Incluir equipamento
+                    cadastroEquipamento.adicionaEquipamento();
+                    break;
+
+                case 5: // Mostrar equipamentos
+                    cadastroEquipamento.mostraEquipamentos();
+                    break;
+
+                case 6: // Pesquisar equipamento por nome
+                    System.out.print("Digite o nome do equipamento: ");
+                    String nomeEquipamento = entrada.nextLine();
+                    Equipamento eq = cadastroEquipamento.buscaEquipamentoPeloNome(nomeEquipamento);
+                    if (eq != null) {
+                        System.out.println("Equipamento encontrado: " + eq);
+                    } else {
+                        System.out.println("Equipamento não encontrado.");
+                    }
+                    break;
+
+                case 7: // Retirar equipamento
+                    System.out.print("Digite o nome do equipamento para retirada: ");
+                    String retira = entrada.nextLine();
+                    Equipamento eqRetira = cadastroEquipamento.buscaEquipamentoPeloNome(retira);
+                    if (eqRetira != null && eqRetira.retirar()) {
+                        System.out.println("Equipamento retirado com sucesso.");
+                    } else {
+                        System.out.println("Equipamento não disponível.");
+                    }
+                    break;
+
+                case 8: // Devolver equipamento
+                    System.out.print("Digite o nome do equipamento para devolução: ");
+                    String devolve = entrada.nextLine();
+                    Equipamento eqDevolve = cadastroEquipamento.buscaEquipamentoPeloNome(devolve);
+                    if (eqDevolve != null) {
+                        eqDevolve.devolver();
+                        System.out.println("Equipamento devolvido com sucesso.");
+                    } else {
+                        System.out.println("Equipamento não encontrado.");
+                    }
+                    break;
+
+                case 9: // Mostrar total de equipamentos disponíveis
+                    int totalDisponivel = 0;
+                    for (int i = 0; i < 10; i++) {
+                        Equipamento e = cadastroEquipamento.buscaPorIndice(i);
+                        if (e != null) {
+                            totalDisponivel += e.getQuantidadeDisponivel();
+                        }
+                    }
+                    System.out.println("Total de equipamentos disponíveis: " + totalDisponivel);
+                    break;
+
+                case 0:
+                    System.out.println("Saindo do sistema...");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+
+        } while (opcao != 0);
+
+        entrada.close();
+    }
+}
+```
+
+---
+
+### ✅ Adição necessária no `CadastroEquipamento`
+
+Para o item 9 funcionar, adicione este método auxiliar na classe `CadastroEquipamento`:
+
+```java
+public Equipamento buscaPorIndice(int i) {
+    if (i >= 0 && i < total) {
+        return equipamentos[i];
+    }
+    return null;
+}
+```
+
+---
+
+### 📌 Observações
+
+* A aplicação inicia com **6 equipamentos pré-cadastrados**.
+* O método `retirar()` e `devolver()` gerenciam corretamente o estoque.
+* A classe `CadastroCliente` só permite alugar se houver disponibilidade.
+
+---
+
+Se quiser que o sistema grave os dados em arquivos (para persistência), posso ajudar com isso também. Deseja essa funcionalidade?
+
+PROMPT 6: 
+Me de sugestoes para um metodo que seja sobre pré-aluguel de um equipamento
+
+SAIDA 6:
+Claro! Um **método de pré-aluguel** pode simular a reserva de um equipamento **sem efetuar a retirada imediata** — útil para planejamento, eventos ou fila de espera. A ideia é marcar o interesse no aluguel, verificar disponibilidade e calcular valores, sem afetar o estoque diretamente.
+
+---
+
+### ✅ Nome sugerido: `preAlugarEquipamento`
+
+---
+
+### 🎯 O que esse método pode fazer:
+
+1. **Verificar se o equipamento existe e tem unidades disponíveis.**
+2. **Calcular o valor do aluguel**, com base no tempo (7, 15, 30 dias) e se o seguro será contratado.
+3. **Simular** a reserva, mas **não alterar o estoque** ainda.
+4. **Opcional:** perguntar ao usuário se deseja confirmar a reserva (e aí sim chamar `retirar()`).
+
+---
+
+### 🧠 Benefícios
+
+* Permite ao cliente saber o custo antes de alugar.
+* Garante que a lógica de valores com desconto e seguro seja reaproveitada.
+* Pode ser o passo anterior ao cadastro de um `Cliente`.
+
+---
+
+### ✅ Exemplo do método `preAlugarEquipamento` (na classe `CadastroEquipamento` ou no `main`)
+
+```java
+public void preAlugarEquipamento() {
+    Scanner entrada = new Scanner(System.in);
+    
+    System.out.print("Digite o nome do equipamento: ");
+    String nome = entrada.nextLine();
+    
+    Equipamento equipamento = buscaEquipamentoPeloNome(nome);
+    
+    if (equipamento == null) {
+        System.out.println("Equipamento não encontrado.");
+        return;
+    }
+    
+    if (equipamento.getQuantidadeDisponivel() == 0) {
+        System.out.println("Equipamento atualmente sem disponibilidade.");
+        return;
+    }
+    
+    System.out.print("Por quantos dias deseja alugar? (7, 15 ou 30): ");
+    int dias = entrada.nextInt();
+
+    System.out.print("Deseja contratar seguro? (true/false): ");
+    boolean contratarSeguro = entrada.nextBoolean();
+
+    // Simular sem alterar o atributo real
+    boolean seguroOriginal = equipamento.isSeguro();
+    equipamento.setSeguro(contratarSeguro);
+    
+    double valor = equipamento.calcularValorAluguel(dias);
+    
+    // Restaurar valor original do seguro
+    equipamento.setSeguro(seguroOriginal);
+
+    System.out.println("Valor estimado do aluguel: R$ " + String.format("%.2f", valor));
+    System.out.println("Deseja confirmar o aluguel agora? (1 - Sim / 2 - Não): ");
+    int opcao = entrada.nextInt();
+    
+    if (opcao == 1) {
+        if (equipamento.retirar()) {
+            System.out.println("Aluguel confirmado. Estoque atualizado.");
+        } else {
+            System.out.println("Erro ao retirar equipamento. Verifique disponibilidade.");
+        }
+    } else {
+        System.out.println("Pré-aluguel cancelado.");
+    }
+}
+```
+
+---
+
+### ✅ Onde colocar?
+
+* Pode ser um método dentro da `CadastroEquipamento`
+* Ou diretamente usado no `main()` dentro da classe `Aluguel`, como opção `10` do menu
+
+---
+
+### ✅ Opção extra no menu:
+
+```java
+System.out.println("10 – Simular pré-aluguel de equipamento");
+```
+
+---
+
+Se quiser, posso integrar esse método direto no seu menu atual, ou criar uma pequena interface de simulação para múltiplos equipamentos. Deseja isso?

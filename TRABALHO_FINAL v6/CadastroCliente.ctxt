@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=CadastroCliente
+comment1.params=equipamentoAlugado
+comment1.target=void\ adicionaCliente(Equipamento)
+comment2.params=nome
+comment2.target=Cliente\ buscaClientePeloNome(java.lang.String)
+comment3.params=
+comment3.target=void\ mostraClientes()
+numComments=4
