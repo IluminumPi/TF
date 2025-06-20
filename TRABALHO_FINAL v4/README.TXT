@@ -11,7 +11,7 @@ Exemplos: Programa BANCO, Programa CARROS e Programa GATO
 
 DIFICULDADES SUPERADAS E LIÇÕES APRENDIDAS:
 
-Durante o processo, houve diversos problemas de logica envolvendo conversoes entre Inteiros, Strings e Objetos.
+Durante o processo, houve diversos problemas de lógica envolvendo conversões entre Inteiros, Strings e Objetos.
 Eventualmente, por meio do uso de novas variaveis e metodos adaptados para esse programa, fomos capazes de atingir a funcionalidade completa que desejavamos.
 Ademais, aprendemos tambem a como gerenciar contas na plataforma GitHub e como cuidar de um repositorio, permitindo um melhor trabalho em grupo.
 ------------------------------------------------------------------------
