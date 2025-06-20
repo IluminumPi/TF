@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=CadastroCliente
+comment1.params=
+comment1.target=void\ cadastrarConta()
+comment2.params=nome
+comment2.target=boolean\ removerDoVetor(java.lang.String)
+comment3.params=
+comment3.target=void\ removerConta()
+comment4.params=
+comment4.target=void\ modificarNome()
+comment5.params=nome
+comment5.target=int\ pesquisarPosicao(java.lang.String)
+comment6.params=n\u00FAmero
+comment6.target=Cliente\ buscarConta(int)
+comment7.params=dias
+comment7.target=void\ aluguel(int)
+comment8.params=
+comment8.target=void\ mostrarContas()
+comment9.params=
+comment9.target=int\ menu()
+numComments=10
